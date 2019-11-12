@@ -1,10 +1,14 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
+@font-face { font-family: 'S-CoreDream-9Black'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+@font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css); 
 
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button,figure {margin:0;padding:0}
 body,th,td,input,select,textarea,button {color:#5d5d5d}
-body *{line-height:1.5; font-family:  'Nanum Gothic', sans-serif; }
+body *{line-height:1.5; font-family: 'S-CoreDream-5Medium'; }
 dl,ul,ol,menu,li {list-style:none}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
@@ -42,10 +46,10 @@ a{color:#5d5d5d; text-decoration: none;}
 .device_content .title{display: inline-block; padding: 0 10px; border-bottom: 2px solid #fe3f01;}
 .device_content .title .icon{width: 15px; height: 15px; display: inline-block; }
 .device_content .title .icon img{display: block; width: 100%; height: 100%; object-fit: contain;}
-.device_content .title .txt{display: inline-block; font-size: 1.2rem; font-weight: 900;}
+.device_content .title .txt{display: inline-block; font-size: 1.2rem; font-family: 'S-CoreDream-9Black';}
 .device_content .title span{vertical-align: middle;}
 .device_content .main_text{color: #fe3f01;}
-.device_content .main_text strong{font-size: 1.4rem; font-weight: bold; margin: 5px 0; display: block;}
+.device_content .main_text strong{font-size: 1.4rem; font-family: 'S-CoreDream-9Black'; margin: 5px 0; display: block;}
 .device_content .main_text p{font-weight: bold;}
 .device_content .footer_text_box{margin-top: 10px;}
 .device_content .footer_text_box ul{display: flex; align-items: center; justify-content: center;}
@@ -53,8 +57,8 @@ a{color:#5d5d5d; text-decoration: none;}
 .device_content .footer_text_box li:nth-child(2){text-align: center;}
 .device_content .footer_text_box li:nth-child(3) .top,
 .device_content .footer_text_box li:nth-child(3) .btm{padding-left: 25px;}
-.device_content .footer_text_box li .top{color: #fe3f01; font-size: 1.1rem; font-weight: 900; background-color: #eaeaea; padding: 3px 10px}
-.device_content .footer_text_box li .btm{color: #454545; font-weight: 900; font-size: 1.1rem; padding: 3px 10px; }
+.device_content .footer_text_box li .top{color: #fe3f01; font-size: 1.1rem; font-family: 'S-CoreDream-9Black'; background-color: #eaeaea; padding: 3px 10px}
+.device_content .footer_text_box li .btm{color: #454545; font-family: 'S-CoreDream-9Black'; font-size: 1.1rem; padding: 3px 10px; }
 
 
 
