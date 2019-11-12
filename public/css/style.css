@@ -38,7 +38,7 @@ a{color:#5d5d5d; text-decoration: none;}
 /******************************/
 
 .device_container{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #FFF;}
-.device_content{max-width: 440px; margin: auto; width: 100%; background-color: #f9fafb; text-align: center;  padding: 20px;}
+.device_content{max-width: 100%; margin: auto; width: 100%; height: 100%; box-sizing: border-box; background-color: #f9fafb; text-align: center;  display: flex; align-items: center; justify-content: center; flex-direction: column;}
 .device_content .title{display: inline-block;  padding: 0 10px 10px; border-bottom: 2px solid #fe3f01;}
 .device_content .title .icon{width: 20px; height: 20px; display: inline-block; }
 .device_content .title .icon img{display: block; width: 100%; height: 100%; object-fit: contain;}
@@ -47,7 +47,7 @@ a{color:#5d5d5d; text-decoration: none;}
 .device_content .main_text{color: #fe3f01;}
 .device_content .main_text strong{font-size: 1.7rem; font-weight: bold; margin: 5px 0; display: block;}
 .device_content .main_text p{font-weight: bold;}
-.device_content .footer_text_box{margin-top: 10px;}
+.device_content .footer_text_box{margin-top: 10px; width: 100%;}
 .device_content .footer_text_box ul{}
 .device_content .footer_text_box li{width: 33.33%; text-align: left; float: left; display: inline-block; vertical-align: top;}
 .device_content .footer_text_box li .top{color: #fe3f01; font-size: 1.2rem; font-weight: bold; background-color: #eaeaea; padding: 3px 0 3px 10px}
@@ -81,6 +81,6 @@ a{color:#5d5d5d; text-decoration: none;}
 .app .main_content .content_box .content_top .item_right{width: 372px; padding: 50px 20px;}
 .app .main_content .content_box .content_top .item_right .img_box{position: absolute; width: 75px; height: 75px; top: -29px; right: 25px;}
 .app .main_content .content_box .content_top .item_right .img_box img{display: block; width: 100%; height: auto;}
-.app .main_content .content_box .notice_content .title_box .icon_box{width: 20px; height: 20px; position: relative;}
-.app .main_content .content_box .notice_content .title_box .icon_box span{position: absolute; width: 100%; height: 2px; background-color: rgba(217,217,217,0.5);}
+.app .main_content .notice_content .title_box .icon_box{width: 20px; height: 20px; position: relative;}
+.app .main_content .notice_content .title_box .icon_box span{position: absolute; width: 100%; height: 2px; background-color: rgba(217,217,217,0.5);}
 
