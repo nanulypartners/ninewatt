@@ -15,7 +15,7 @@ dl,ul,ol,menu,li {list-style:none}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}
 table {border-collapse: collapse;border-spacing: 0;}
-html{height:100%;}
+html , body{height:100%;}
 body{min-height: 100%;}
 button{background:none; border:none; outline:none; cursor:pointer;}
 input,select,button{box-sizing:border-box;}
@@ -61,7 +61,8 @@ a{color:#5d5d5d; text-decoration: none;}
 .device_content .footer_text_box li:nth-child(3) .top,
 .device_content .footer_text_box li:nth-child(3) .btm{padding-left: 25px;}
 .device_content .footer_text_box li .top{color: #fe3f01; font-size: 1.1rem; font-family: 'S-CoreDream-9Black'; background-color: #eaeaea; padding: 3px 10px}
-.device_content .footer_text_box li .btm{color: #454545; font-family: 'S-CoreDream-9Black'; font-size: 1.1rem; padding: 3px 10px; }
+.device_content .footer_text_box li .btm{ padding: 3px 10px; }
+.device_content .footer_text_box li .btm span{color: #454545; font-family: 'S-CoreDream-9Black'; font-size: 1.1rem;}
 
 
 
@@ -69,7 +70,7 @@ a{color:#5d5d5d; text-decoration: none;}
 /****** app ******/
 /*****************/
 
-.app{width: 100%; height: 100%; display: flex; background-color: #f9fafb; min-width: 1800px;}
+.app{width: 100%; display: flex; background-color: #f9fafb; min-width: 1800px;}
 .app .side_content{width: 248px; min-height: 100vh; background-color: #0d131b;}
 .app .side_content .side_top{width: 100%; height: 66px; background-color: #2a7efb; display: flex; align-items: center; padding-left: 35px; box-sizing: border-box;}
 .app .side_content .side_top a{display: block; width: 64px;}
@@ -136,3 +137,46 @@ a{color:#5d5d5d; text-decoration: none;}
 .app .content_btm .item .pagination_box ul{display: flex; align-items: center; justify-content: space-between; }
 .app .content_btm .item .pagination_box ul li a{font-family: 'S-CoreDream-3Light'; font-size: 12px; }
 .app .content_btm .item .pagination_box ul li a.active{font-family: 'S-CoreDream-9Black'; color: #505050;}
+
+
+
+/***********************/
+/****** chart_app ******/
+/***********************/
+
+.chart_app{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #2e2f33;}
+.chart_app .box{width: 1000px; margin: auto; display: flex; align-items: flex-end; justify-content: space-between; padding: 20px 40px; box-sizing: border-box;}
+.chart_app .box .left{width: 60%;}
+.chart_app .box .right{right: 35%;}
+.chart_app .box .right .logo_box{width: 140px; margin-left: auto;}
+.chart_app .box .right .logo_box img{display: block; width: 100%; height: auto;}
+
+.chart_app .box .toggle_btn_container{margin-top: 20px;}
+.chart_app .box .toggle_input{display: none;}
+.chart_app .box .toggle_input + .toggle_label {outline: 0; margin-left: auto; display: block;width: 130px;height: 40px;position: relative;cursor: pointer;user-select: none;}
+.chart_app .box .toggle_input + .toggle_label:after, 
+.chart_app .box .toggle_input + .toggle_label:before {position: relative;display: block;content: "";width: 60px;height: 100%;}
+.chart_app .box .toggle_input + .toggle_label:after {left: 0;}
+.chart_app .box .toggle_input + .toggle_label:before {display: none;}
+.chart_app .box .toggle_input:checked + .toggle_label:after {left: 50%;}
+.chart_app .box .toggle_input + .toggle_label {background: #272727;border-radius: 2em;padding: 3px;transition: all 0.4s ease; box-sizing: border-box;}
+.chart_app .box .toggle_input + .toggle_label:after {border-radius: 30px;background: #32313c;transition: all 0.2s ease;}
+.chart_app .box .toggle_input:checked + .toggle_label {background: #272727;}
+.chart_app .box .toggle_input + .toggle_label span{position: absolute; z-index: 1; color: #FFF; top: 50%; font-size: 14px; transform: translateY(-50%); font-family: 'Nanum Gothic'}
+.chart_app .box .toggle_input + .toggle_label span.txt1{left: 19px; font-weight: bold; }
+.chart_app .box .toggle_input + .toggle_label span.txt2{right: 19px; font-weight: normal; }
+
+.chart_app .box .toggle_input:checked + .toggle_label span.txt1{font-weight: normal; }
+.chart_app .box .toggle_input:checked + .toggle_label span.txt2{font-weight: bold; }
+
+
+.chart_app .box .input_content{margin-bottom: 30px;}
+.chart_app .box .input_content .title_box{display: flex; align-items: center; justify-content: flex-end; font-size: 18px; margin-bottom: 15px;}
+.chart_app .box .input_content .title_box .icon{color: #5f6674;}
+.chart_app .box .input_content .title_box .txt{margin-left: 20px; color: #FFF; font-family: 'Nanum Gothic'}
+.chart_app .box .input_content .input_box{display: flex; align-items: center; justify-content: flex-end;}
+.chart_app .box .input_content .input_box input{all: unset; padding: 10px; width: 150px; background-color: #32313c; border-radius: 5px; color: #eac364; box-shadow: 2px 2px 3px rgba(0,0,0,1); box-sizing: border-box; text-align: right;}
+.chart_app .box .input_content .input_box span{color: #FFF; margin-left: 10px;}
+
+.chart_app .box .right .btn_box{width: 96px; height: 44px; margin-left: auto;}
+.chart_app .box .right .btn_box button{display: block; width: 100%; height: 100%; border-radius: 8px; border:2px solid #898989; font-size: 18px;}
