@@ -37,22 +37,24 @@ a{color:#5d5d5d; text-decoration: none;}
 /****** device_container ******/
 /******************************/
 
-.device_container{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f9fafb; zoom: 3;}
-.device_content{margin: auto; width: 100%; background-color: #f9fafb; text-align: center;  padding: 20px;}
-.device_content .title{display: inline-block; padding: 0 10px 10px; border-bottom: 2px solid #fe3f01;}
-.device_content .title .icon{width: 20px; height: 20px; display: inline-block; }
+.device_container{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f9fafb; zoom: 1.35;}
+.device_content{margin: auto; width: 100%; background-color: #f9fafb; text-align: center;  padding: 10px;}
+.device_content .title{display: inline-block; padding: 0 10px; border-bottom: 2px solid #fe3f01;}
+.device_content .title .icon{width: 15px; height: 15px; display: inline-block; }
 .device_content .title .icon img{display: block; width: 100%; height: 100%; object-fit: contain;}
-.device_content .title .txt{display: inline-block; font-size: 1.42rem; font-weight: bold;}
+.device_content .title .txt{display: inline-block; font-size: 1.2rem; font-weight: bold;}
 .device_content .title span{vertical-align: middle;}
 .device_content .main_text{color: #fe3f01;}
-.device_content .main_text strong{font-size: 1.7rem; font-weight: bold; margin: 5px 0; display: block;}
+.device_content .main_text strong{font-size: 1.4rem; font-weight: bold; margin: 5px 0; display: block;}
 .device_content .main_text p{font-weight: bold;}
 .device_content .footer_text_box{margin-top: 10px;}
 .device_content .footer_text_box ul{display: flex; align-items: center; justify-content: center;}
-.device_content .footer_text_box li{text-align: left; }
-.device_content .footer_text_box li:nth-child(2){}
-.device_content .footer_text_box li .top{color: #fe3f01; font-size: 1.2rem; font-weight: bold; background-color: #eaeaea; padding: 3px 10px}
-.device_content .footer_text_box li .btm{color: #454545; font-weight: bold; font-size: 1.2rem; padding: 3px 10px; }
+.device_content .footer_text_box li{text-align: left; width: 30%;}
+.device_content .footer_text_box li:nth-child(2){text-align: center;}
+.device_content .footer_text_box li:nth-child(3) .top,
+.device_content .footer_text_box li:nth-child(3) .btm{padding-left: 20px;}
+.device_content .footer_text_box li .top{color: #fe3f01; font-size: 1rem; font-weight: bold; background-color: #eaeaea; padding: 3px 10px}
+.device_content .footer_text_box li .btm{color: #454545; font-weight: bold; font-size: 1rem; padding: 3px 10px; }
 
 
 
