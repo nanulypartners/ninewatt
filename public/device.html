@@ -41,64 +41,71 @@
     </div>
     <script>
         $(function(){
-            $.ajax({
-                url: 'http://ec2-13-125-22-29.ap-northeast-2.compute.amazonaws.com/notify.php',
-                type: 'GET',
-                data: {
-                    // 보낼 데이터
-                },
-                dataType: 'json'
-            })
-                .done(function(res) {
-                    // 성공 시 동작
-                    console.log('성공' , res)
-                    var date = res[0].date.split(' ')
-                    $('#title').text(res[0].title);
-                    $('#date').text(date[0]);
-                    $('#content').text(res[0].content);
-                    $('#telephone').text(res[0].telephone);
+            setInterval(function(){
+                AJAX()
+            } , 5000)
+            AJAX()
+            function AJAX() {
+                console.log('aaa')
+                $.ajax({
+                    url: 'http://ec2-13-125-22-29.ap-northeast-2.compute.amazonaws.com/notify.php',
+                    type: 'GET',
+                    data: {
+                        // 보낼 데이터
+                    },
+                    dataType: 'json'
                 })
-                .fail(function(error) {
-                    // 실패 시 동작
-                    console.log('에러' ,error)
+                    .done(function(res) {
+                        // 성공 시 동작
+                        // console.log('성공' , res)
+                        var date = res[0].date.split(' ')
+                        var newDate = date[0].split('-')
+                        var week = ['일', '월', '화', '수', '목', '금', '토'];
+                        var dayOfWeek = week[new Date(date[0]).getDay()];
+                        $('#title').text(res[0].title);
+                        $('#date').text(newDate[1] + "월 " + newDate[2] + "일 " +"("+ dayOfWeek +  ")" );
+                        $('#content').text(res[0].content);
+                        $('#telephone').text(res[0].telephone);
+                    })
+                    .fail(function(error) {
+                        // 실패 시 동작
+                        console.log('에러' ,error)
+                    })
+                    .always(function(response) {
+                        // 완료 시 동작
+                    }); 
+                
+                $.ajax({
+                    url: 'http://ec2-13-125-22-29.ap-northeast-2.compute.amazonaws.com/balance.php',
+                    type: 'GET',
+                    data: {
+                        // 보낼 데이터
+                    },
+                    dataType: 'json'
                 })
-                .always(function(response) {
-                    // 완료 시 동작
-                }); 
+                    .done(function(res) {
+                        // 성공 시 동작
+                        // console.log('성공22' , res)
+                        var date = res[0].date.split('-')
+                        var oldDate = new Date();
+                        var newDate = new Date(oldDate.getFullYear() , date[1])
+                        var lastDate = new Date(oldDate.getFullYear() , date[1] , 0)
+                        var balance = numberWithCommas(res[0].balance);
+                        var predicttime =  Math.floor(res[0].predicttime  / 60); 
+                        $('#date2').text( newDate.getMonth() + "/1 - " + newDate.getMonth() + "/" + lastDate.getDate() )
+                        $('#balance').text( balance + "원")
+                        $('#predicttime').text(predicttime + "시간")
+
+                    })
+                    .fail(function(error) {
+                        // 실패 시 동작
+                        console.log('에러' ,error)
+                    })
+                    .always(function(response) {
+                        // 완료 시 동작
+                    }); 
+            }
             
-            $.ajax({
-                url: 'http://ec2-13-125-22-29.ap-northeast-2.compute.amazonaws.com/balance.php',
-                type: 'GET',
-                data: {
-                    // 보낼 데이터
-                },
-                dataType: 'json'
-            })
-                .done(function(res) {
-                    // 성공 시 동작
-                    console.log('성공22' , res)
-                    var date = res[0].date.split('-')
-                    var oldDate = new Date();
-                    var newDate = new Date(oldDate.getFullYear() , date[1])
-                    var lastDate = new Date(oldDate.getFullYear() , date[1] , 0)
-
-                    var balance = numberWithCommas(res[0].balance);
-                    
-                    var predicttime =  Math.floor(res[0].predicttime  / 60); 
-                    console.log(predicttime)
-
-                    $('#date2').text( newDate.getMonth() + "/1 - " + newDate.getMonth() + "/" + lastDate.getDate() )
-                    $('#balance').text( balance + "원")
-                    $('#predicttime').text(predicttime + "시간")
-
-                })
-                .fail(function(error) {
-                    // 실패 시 동작
-                    console.log('에러' ,error)
-                })
-                .always(function(response) {
-                    // 완료 시 동작
-                }); 
 
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

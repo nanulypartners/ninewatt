@@ -46,12 +46,12 @@ a{color:#5d5d5d; text-decoration: none;}
 
 .device_container{width: 100%; height: 100%; background-color: #f9fafb; zoom: 1.8;}
 .device_content{margin: auto; width: 100%; background-color: #f9fafb; text-align: center;}
-.device_content .title{display: inline-block; padding: 0 10px; border-bottom: 2px solid #fe3f01;}
+.device_content .title{display: inline-block; padding: 0 10px; margin-top: 10px; border-bottom: 2px solid #fe3f01;}
 .device_content .title .icon{width: 15px; height: 15px; display: inline-block; }
 .device_content .title .icon img{display: block; width: 100%; height: 100%; object-fit: contain;}
 .device_content .title .txt{display: inline-block; font-size: 1.2rem; font-family: 'S-CoreDream-9Black';}
 .device_content .title span{vertical-align: middle;}
-.device_content .main_text{color: #fe3f01;}
+.device_content .main_text{color: #fe3f01; margin-bottom: 20px;}
 .device_content .main_text strong{font-size: 1.4rem; font-family: 'S-CoreDream-9Black'; margin: 5px 0; display: block;}
 .device_content .main_text p{font-weight: bold;}
 .device_content .footer_text_box{margin-top: 10px;}
