@@ -90,7 +90,7 @@
                         <div class="title_box">
                             <strong>사용자 감지 시간</strong>
                         </div>
-                        <div class="table_box">
+                        <div class="table_box" id="table_box">
                             <table>
                                 <thead>
                                     <tr>
@@ -135,7 +135,7 @@
                             </table>
                         </div>
                         <div class="pagination_box">
-                            <ul>
+                            <ul id="pagination">
                                 <li><a href="#">FIRST</a></li>
                                 <li><a href="#">PREV</a></li>
                                 <li><a href="#" class="active">1</a></li>
@@ -147,6 +147,7 @@
                                 <li><a href="#">LAST</a></li>
                             </ul>
                         </div>
+                        <!-- <div id="pagination" style="text-align: center"></div> -->
                     </div>
                 </div>
             </div>
@@ -190,8 +191,123 @@
                     .always(function(response) {
                         // 완료 시 동작
                     }); 
+
+                $.ajax({
+                    url: 'http://ec2-13-125-22-29.ap-northeast-2.compute.amazonaws.com/all.php',
+                    type: 'GET',
+                    data: {
+                        // 보낼 데이터
+                    },
+                    dataType: 'json'
+                })
+                    .done(function(res) {
+                        // 성공 시 동작
+                        console.log('성공' , res)
+                        var list = res.human;
+                        var pageCount = 5;
+                        var blockCount = 5;
+                        var totalPage = Math.ceil(list.length / pageCount);
+                        var totalBlock = Math.ceil(totalPage / blockCount);
+                        var pagination = document.getElementById('pagination');  
+                        var tableBox = document.getElementById('table_box').querySelector('tbody');
+                        var renderTable = function(page) {
+                            var startNum = (pageCount * (page - 1));
+                            var endNum = ((pageCount * page) >= list.length) ? list.length : (pageCount * page);
+
+                            var html = '';
+                            for (var index = startNum; index < endNum; index++) {
+                                var date = res.sensor[index].date.split(' ')
+                                var newDate = date[0].split('-')
+                                var newHour = date[1].split(':')
+                                html += `<tr>
+                                            <td class="num">${list[index].person_id}</td>
+                                            <td class="name">${list[index].name}</td>
+                                            <td class="date">${newDate[1]}월 ${newDate[2]}일 ${newHour[0]}시 ${newHour[1]}분</td>
+                                            <td class="location">${list[index].address}</td>
+                                        </tr>`;
+                            }
+
+                            tableBox.innerHTML = html;
+                        };
+                        var renderPagination = function(page) {
+                            var block = Math.floor((page-1)/blockCount)+1;
+                            var startPage = ((block-1)*blockCount)+1;
+                            var endPage = ((startPage + blockCount -1) > totalPage) ? totalPage : (startPage + blockCount -1);
+
+                            var paginationHTML = '';
+
+                            if (page !== 1) paginationHTML += "<li><a style='cursor:pointer' class='first_page'>FIRST</a></li>";
+                            if (block !== 1) paginationHTML += "<li><a style='cursor:pointer' class='back_page'>PREV</a></li>   ";
+                            
+
+                            for (var index = startPage; index <= endPage; index++) {
+                                paginationHTML += (parseInt(page) === parseInt(index)) ?
+                                    `<li><a class="active">${index}</a></li>` : `<li><a style='cursor: pointer' class='go_page' data-value='${index}'>${index}</a></li>`
+                                    // "| <a style='color:#ff8400'>" + index + "</a> |" : "| <a style='cursor: pointer' class='go_page' data-value='" + index + "'>" + index + "</a> |";
+                            }
+
+                            if (block < totalBlock) paginationHTML += "<li><a style='cursor:pointer' class='next_page'>NEXT</a></li>";
+                            if (page < totalPage) paginationHTML += "<li><a style='cursor:pointer' class='last_page'>LAST</a></li>";
+
+                            pagination.innerHTML = paginationHTML;
+                            addEventPagination(startPage, endPage);
+                        };
+                        var renderTableAndPagination = function(page = 1) {
+                            renderTable(page);
+                            renderPagination(page);
+                        };
+                        
+                        var addEventPagination = function(startPage, endPage){
+                            if (!!document.querySelector(".first_page")) {
+                                document.querySelector(".first_page").addEventListener('click', () => {
+                                    renderTableAndPagination(1);
+                                });
+                            }
+
+                            if (!!document.querySelector(".back_page")) {
+                                document.querySelector(".back_page").addEventListener('click', () => {
+                                    renderTableAndPagination(startPage-1);
+                                });
+                            }
+
+                            document.querySelectorAll(".go_page").forEach(goPage => {
+                                goPage.addEventListener('click', e => {
+                                    renderTableAndPagination(parseInt(e.target.getAttribute('data-value')));
+                                });
+                            });
+
+                            if (!!document.querySelector(".next_page")) {
+                                document.querySelector(".next_page").addEventListener('click', () => {
+                                    renderTableAndPagination(endPage + 1);
+                                });
+                            }
+
+                            if (!!document.querySelector(".last_page")) {
+                                document.querySelector(".last_page").addEventListener('click', () => {
+                                    renderTableAndPagination(totalPage);
+                                });
+                            }
+                        };
+
+                        renderTableAndPagination()
+                        
+                    })
+                    .fail(function(error) {
+                        // 실패 시 동작
+                        console.log('에러' ,error)
+                    })
+                    .always(function(response) {
+                        // 완료 시 동작
+                    }); 
             } 
             AJAX()  
+            
+            
+            
+            
+
+
+            
             
         })
     </script>
