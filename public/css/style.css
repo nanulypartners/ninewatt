@@ -149,8 +149,8 @@ a{color:#5d5d5d; text-decoration: none;}
 
 .chart_app{width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #2e2f33;}
 .chart_app .box{width: 1000px; margin: auto; display: flex; align-items: flex-end; justify-content: space-between; padding: 20px 40px; box-sizing: border-box;}
-.chart_app .box .left{width: 60%;}
-.chart_app .box .right{right: 35%;}
+.chart_app .box .left{width: 70%;}
+.chart_app .box .right{right: 30%;}
 .chart_app .box .right .logo_box{width: 140px; margin-left: auto;}
 .chart_app .box .right .logo_box img{display: block; width: 100%; height: auto;}
 
@@ -167,7 +167,7 @@ a{color:#5d5d5d; text-decoration: none;}
 .chart_app .box .toggle_input:checked + .toggle_label {background: #272727;}
 .chart_app .box .toggle_input + .toggle_label span{position: absolute; z-index: 1; color: #FFF; top: 50%; font-size: 14px; transform: translateY(-50%); font-family: 'Nanum Gothic'}
 .chart_app .box .toggle_input + .toggle_label span.txt1{left: 19px; font-weight: bold; }
-.chart_app .box .toggle_input + .toggle_label span.txt2{right: 19px; font-weight: normal; }
+.chart_app .box .toggle_input + .toggle_label span.txt2{right: 21px; font-weight: normal; }
 
 .chart_app .box .toggle_input:checked + .toggle_label span.txt1{font-weight: normal; }
 .chart_app .box .toggle_input:checked + .toggle_label span.txt2{font-weight: bold; }
@@ -180,6 +180,7 @@ a{color:#5d5d5d; text-decoration: none;}
 .chart_app .box .input_content .input_box{display: flex; align-items: center; justify-content: flex-end;}
 .chart_app .box .input_content .input_box input{all: unset; padding: 10px; width: 150px; background-color: #32313c; border-radius: 5px; color: #eac364; box-shadow: 2px 2px 3px rgba(0,0,0,1); box-sizing: border-box; text-align: right;}
 .chart_app .box .input_content .input_box span{color: #FFF; margin-left: 10px;}
+.chart_app .box .input_content .input_box input#setting{pointer-events: none;}
 
 .chart_app .box .right .btn_box{width: 96px; height: 44px; margin-left: auto;}
 .chart_app .box .right .btn_box button{display: block; width: 100%; height: 100%; border-radius: 8px; border:2px solid #898989; font-size: 18px;}

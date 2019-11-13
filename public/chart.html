@@ -43,7 +43,7 @@
                         <span class="txt">설정 목표 전력</span>
                     </div>
                     <div class="input_box">
-                        <input type="text">
+                        <input type="text" id="setting" value="자동">
                         <span>kW</span>
                     </div>
                 </div>
@@ -54,6 +54,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.js"></script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
@@ -62,19 +63,76 @@
 
             // The data for our dataset
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['0시' , '2시' , '4시' , '6시' , '8시' , '10시' , '12시'],
                 datasets: [{
-                    label: 'My First dataset',
+                    label: 'ECC',
                     // backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(234, 195, 100)',
-                    backgroundColor : 'rgba(39,39,39)',
-                    data: [0, 10, 5, 2, 20, 30, 45]
+                    // backgroundColor : 'rgba(39,39,39)',
+                    pointRadius: 0,  
+                    data: [0, 10, 5 , 3 , 5, 20 , 14]
                 }]
             },
+            
 
             // Configuration options go here
-            options: {}
+            options: {
+                scales : {
+                    xAxes: [{
+                        gridLines: {
+                            // display: false,
+                            // color: "black"
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "시간",
+                            fontColor: "rgb(234, 195, 100)"
+                        }
+                    }],
+                    yAxes: [{
+                        id: 'y-axis-1',
+                        gridLines: {
+                            // color: "black",
+                            // borderDash: [2, 5],
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "전력량",
+                            fontColor: "rgb(234, 195, 100)"
+                        }
+                    }]
+                },
+                annotation: {
+                    annotations: [{
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y-axis-1',
+                        value: 10,
+                        borderColor: 'tomato',
+                        borderWidth: 2,
+                        label : {
+                            content : '목표전력',
+                            enabled : true
+                        }
+                    }],
+                    drawTime: "afterDraw" // (default)
+                }
+            }
         }); 
+
+        var toggleBtn = document.querySelector('#toggle_btn');
+        var setting = document.querySelector('#setting');
+        // toggleBtn.checked = true;
+        toggleBtn.addEventListener('change' , function(){
+            console.log(toggleBtn.checked)
+            if(toggleBtn.checked) {
+                setting.value = null;
+                setting.style.pointerEvents = 'auto';
+            } else {
+                setting.value = '자동';
+                setting.style.pointerEvents = 'none';
+            }
+        })
     </script>
 </body>
 </html>
