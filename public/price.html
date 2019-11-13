@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <title>사용자 감지 시간</title>
+    <title>사용자 금액 조회</title>
 </head>
 <body>
     <div class="app">
@@ -22,13 +22,13 @@
                 </div>
                 <ul class="side_nav_box">
                     <li>
-                        <a  href="/price.html">
+                        <a href="/price.html" class="active">
                             <span class="icon"><i class="fas fa-list-alt lg"></i></span>
                             <span class="txt">사용 금액 조회</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/" class="active">
+                        <a href="/">
                             <span class="icon"><i class="fas fa-history"></i></span>
                             <span class="txt">사용자 감지 시간</span>
                         </a>
@@ -96,7 +96,7 @@
                                     <tr>
                                         <th>순번</th>
                                         <th>성명</th>
-                                        <th>세싱 된 시간</th>
+                                        <th>남는 금액 / 월 보조금</th>
                                         <th>주소 (연수구)</th>
                                     </tr>
                                 </thead>
@@ -293,15 +293,7 @@
                         // 완료 시 동작
                     }); 
             } 
-            AJAX()  
-            
-            
-            
-            
-
-
-            
-            
+            AJAX()           
         })
     </script>
 </body>
