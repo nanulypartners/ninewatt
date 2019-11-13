@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"type="text/javascript"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ9FRe2oX-w0zkDv2avFJK1LKxY4g3M-M"></script>
     <title>사용자 감지 시간</title>
 </head>
 <body>
@@ -48,8 +50,8 @@
                             <img src="./images/invalidName3@2x.png" alt="">
                         </div>
                         <div class="map_box">
-                            <div class="map">
-                                <img src="./images/samplemap.png" alt="">
+                            <div class="map" id="map">
+                                <!-- <img src="./images/samplemap.png" alt=""> -->
                             </div>
                             <div class="map_btn_box">
                                 <button class="btn1">
@@ -212,11 +214,47 @@
                             var endNum = ((pageCount * page) >= list.length) ? list.length : (pageCount * page);
 
                             var html = '';
+                            var locations = []
                             for (var index = startNum; index < endNum; index++) {
                                 var date = res.sensor[index].date.split(' ')
                                 var newDate = date[0].split('-')
                                 var newHour = date[1].split(':')
                                 html += "<tr><td class=\"num\">" + list[index].person_id + "</td><td class=\"name\">" + list[index].name + "</td><td class=\"date\">" + newDate[1] + "월 " + newDate[2] + "일 " + newHour[0] + "시 " + newHour[1] + "분</td><td class=\"location\">" + list[index].address + "</td></tr>";
+
+                                // 구글맵 start
+                                locations.push([list[index].name , list[index].lat , list[index].lng])
+                                // console.log(locations)
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 12,
+                                    center: new google.maps.LatLng(list[0].lat,list[0].lng),
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                });
+
+                                var infowindow = new google.maps.InfoWindow();
+
+                                var marker, i;
+                                for (i = 0; i < locations.length; i++) {  
+                                marker = new google.maps.Marker({
+                                    id:i,
+                                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                    map: map
+                                });
+
+                                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                    return function() {
+                                    infowindow.setContent(locations[i][0]);
+                                    infowindow.open(map, marker);
+                                    }
+                                })(marker, i));
+                                if(marker)
+                                {
+                                    marker.addListener('click', function() {
+                                    map.setZoom(15);
+                                    map.setCenter(this.getPosition());
+                                    });
+                                    }
+                                }
+                                // 구글맵 end
                                         
                             }
 
@@ -236,7 +274,9 @@
                             for (var index = startPage; index <= endPage; index++) {
                                 paginationHTML += (parseInt(page) === parseInt(index)) ?
                                 "<li><a class=\"active\">" + index + "</a></li>" : "<li><a style='cursor: pointer' class='go_page' data-value='" + index + "'>" + index + "</a></li>";
-                                    // "| <a style='color:#ff8400'>" + index + "</a> |" : "| <a style='cursor: pointer' class='go_page' data-value='" + index + "'>" + index + "</a> |";
+
+                                
+                                    
                             }
 
                             if (block < totalBlock) paginationHTML += "<li><a style='cursor:pointer' class='next_page'>NEXT</a></li>";
@@ -283,6 +323,8 @@
                         };
 
                         renderTableAndPagination()
+
+                        
                         
                     })
                     .fail(function(error) {
@@ -294,6 +336,10 @@
                     }); 
             } 
             AJAX()  
+
+
+
+            
             
             
             
