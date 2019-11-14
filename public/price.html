@@ -169,17 +169,20 @@
                     .done(function(res) {
                         // 성공 시 동작
                         // console.log('성공' , res)
+                        var html = '';
                         for(var i = 0; i < 8; i += 1) {
                             if (res[i] === undefined) {
                                 return false
                             }
                             var date = res[i].date.split(' ')
-                            noticeUl.insertAdjacentHTML(
-                                'afterbegin', 
-                                "<li><span class=\"list_title\">" + res[i].title + "</span><span class=\"list_date\">" + date[0] + "</span></li>"
-                            );
+                            html += "<li><span class=\"list_title\">" + res[i].title + "</span><span class=\"list_date\">" + date[0] + "</span></li>"
+                            // noticeUl.insertAdjacentHTML(
+                            //     'afterbegin', 
+                            //     "<li><span class=\"list_title\">" + res[i].title + "</span><span class=\"list_date\">" + date[0] + "</span></li>"
+                            // );
 
                         }
+                        noticeUl.innerHTML = html;
                         
                     })
                     .fail(function(error) {
@@ -329,7 +332,10 @@
                         // 완료 시 동작
                     }); 
             } 
-            AJAX()           
+            AJAX()   
+            setInterval(function(){
+                AJAX()
+            } , 5000)          
         })
     </script>
 </body>
