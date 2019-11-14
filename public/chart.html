@@ -122,15 +122,18 @@
 
         var toggleBtn = document.querySelector('#toggle_btn');
         var setting = document.querySelector('#setting');
+        var btn = document.querySelector('.btn_box button');
         // toggleBtn.checked = true;
         toggleBtn.addEventListener('change' , function(){
             console.log(toggleBtn.checked)
             if(toggleBtn.checked) {
                 setting.value = null;
                 setting.style.pointerEvents = 'auto';
+                btn.classList.add('active');
             } else {
                 setting.value = '자동';
                 setting.style.pointerEvents = 'none';
+                btn.classList.remove('active');
             }
         })
     </script>

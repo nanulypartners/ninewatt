@@ -222,18 +222,19 @@
                                 html += "<tr><td class=\"num\">" + list[index].person_id + "</td><td class=\"name\">" + list[index].name + "</td><td class=\"date\">" + res.balance[index].balance + " / " + res.voucher[index].amount +"</td><td class=\"location\">" + list[index].address + "</td></tr>";
 
                                 // 구글맵 start
-                                locations.push([list[index].name , list[index].lat , list[index].lng])
-                                // console.log(locations)
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom: 12,
-                                    center: new google.maps.LatLng(list[0].lat,list[0].lng),
-                                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                                });
+                                locations.push([list[index].name , list[index].lat , list[index].lng])          
+                            }
+                            // 구글맵 start
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 12,
+                                center: new google.maps.LatLng(locations[0][1],locations[0][2]),
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                            });
 
-                                var infowindow = new google.maps.InfoWindow();
+                            var infowindow = new google.maps.InfoWindow();
 
-                                var marker, i;
-                                for (i = 0; i < locations.length; i++) {  
+                            var marker, i;
+                            for (i = 0; i < locations.length; i++) {  
                                 marker = new google.maps.Marker({
                                     id:i,
                                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -246,17 +247,14 @@
                                     infowindow.open(map, marker);
                                     }
                                 })(marker, i));
-                                if(marker)
-                                {
+                                if(marker){
                                     marker.addListener('click', function() {
                                     map.setZoom(15);
                                     map.setCenter(this.getPosition());
                                     });
-                                    }
-                                }
-                                // 구글맵 end
-                                        
+                                 }
                             }
+                            // 구글맵 end
 
                             tableBox.innerHTML = html;
                         };
