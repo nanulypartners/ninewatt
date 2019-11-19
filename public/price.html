@@ -250,7 +250,7 @@
                         var date = res.sensor[index].date.split(' ')
                         var newDate = date[0].split('-')
                         var newHour = date[1].split(':')
-                        html += "<tr><td class=\"num\">" + list[index].person_id + "</td><td class=\"name\">" + list[index].name + "</td><td class=\"date\">" + newDate[1] + "월 " + newDate[2] + "일 " + newHour[0] + "시 " + newHour[1] + "분</td><td class=\"location\">" + list[index].address + "</td></tr>";
+                        html += "<tr><td class=\"num\">" + list[index].person_id + "</td><td class=\"name\">" + list[index].name + "</td><td class=\"date\">" + res.balance[index].balance + " / " + res.voucher[index].amount +"</td><td class=\"location\">" + list[index].address + "</td></tr>";
                         locations.push([list[index].name , list[index].lat , list[index].lng])            
                     }
                     // 구글맵 start
