@@ -157,8 +157,8 @@ a{color:#5d5d5d; text-decoration: none;}
 .chart_app .box .left .chart_btm{display: flex; align-items: center; justify-content: space-between; padding-left: 45px; color: #FFF; font-size: 12px;}
 .chart_app .box .left .chart_btm .time12{display: block;}
 .chart_app .box .right{right: 30%;}
-.chart_app .box .right .logo_box{width: 140px; margin-left: auto;}
-.chart_app .box .right .logo_box img{display: block; width: 100%; height: auto;}
+.chart_app .box .right .logo_box{width: 140px; height: 140px; margin-left: auto; position: relative; overflow: hidden;}
+.chart_app .box .right .logo_box img{position: absolute; right: -22px; top: 0; width: 100%; height: auto; transform: scale(2);}
 
 .chart_app .box .toggle_btn_container{margin-top: 20px;}
 .chart_app .box .toggle_input{display: none;}
@@ -185,6 +185,7 @@ a{color:#5d5d5d; text-decoration: none;}
 .chart_app .box .input_content .title_box .txt{margin-left: 20px; color: #FFF; font-family: 'Nanum Gothic'}
 .chart_app .box .input_content .input_box{display: flex; align-items: center; justify-content: flex-end;}
 .chart_app .box .input_content .input_box input{all: unset; padding: 10px; width: 150px; background-color: #32313c; border-radius: 5px; color: #eac364; box-shadow: 2px 2px 3px rgba(0,0,0,1); box-sizing: border-box; text-align: right;}
+.chart_app .box .input_content .input_box input#now{pointer-events: none;}
 .chart_app .box .input_content .input_box span{color: #FFF; margin-left: 10px;}
 .chart_app .box .input_content .input_box input#setting{pointer-events: none;}
 
