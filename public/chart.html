@@ -86,8 +86,9 @@
                 console.log('성공' , res)
                 var checkSum = res.checksum;
                 var resDate = [];
-                var hour = []
-                var current = []
+                var hour = [];
+                var current = [];
+                var target = [];
                 for(var i = 0; i <= 23; i+= 1) {
                     for(var v = 0; v <= 55; v+= 5) {
                         // console.log(v)
@@ -117,6 +118,7 @@
                         resDate.push(i.label)
                     }
                     current.push(i.current)
+                    target.push(i.target)
                 })
 
                 var ctx = document.getElementById('myChart').getContext('2d');
@@ -128,14 +130,24 @@
                     // The data for our dataset
                     data: {
                         labels: hour,
-                        datasets: [{
-                            label: 'ECC',
-                            // backgroundColor: 'rgb(255, 99, 132)',
-                            borderColor: 'rgb(234, 195, 100)',
-                            // backgroundColor : 'rgba(39,39,39)',
-                            pointRadius: 0,  
-                            data: current
-                        }]
+                        datasets: [
+                            {
+                                label: 'ECC',
+                                // backgroundColor: 'rgb(255, 99, 132)',
+                                borderColor: 'rgb(234, 195, 100)',
+                                // backgroundColor : 'rgba(39,39,39)',
+                                pointRadius: 0,  
+                                data: current
+                            },
+                            {
+                                label: '목표전력',
+                                // backgroundColor: 'rgb(255, 99, 132)',
+                                borderColor: 'tomato',
+                                // backgroundColor : 'rgba(39,39,39)',
+                                pointRadius: 0,  
+                                data: target
+                            }
+                        ]
                     },
                     
 
@@ -174,18 +186,18 @@
                             }]
                         },
                         annotation: {
-                            annotations: [{
-                                type: 'line',
-                                mode: 'horizontal',
-                                scaleID: 'y-axis-1',
-                                value: now.value,
-                                borderColor: 'tomato',
-                                borderWidth: 2,
-                                label : {
-                                    content : '목표전력',
-                                    enabled : true
-                                }
-                            }],
+                            // annotations: [{
+                            //     type: 'line',
+                            //     mode: 'horizontal',
+                            //     scaleID: 'y-axis-1',
+                            //     value: now.value,
+                            //     borderColor: 'tomato',
+                            //     borderWidth: 2,
+                            //     label : {
+                            //         content : '목표전력',
+                            //         enabled : true
+                            //     }
+                            // }],
                             drawTime: "afterDraw" // (default)
                         }
                     }
@@ -207,14 +219,17 @@
                             if(checkSum !== res.checksum) {
                                 checkSum = res.checksum
                                 var current = []
+                                var target = [];
                                 res.date.forEach(function(i){
                                     // console.log(i)
                                     if(i.label !=='') {
                                         resDate.push(i.label)
                                     }
                                     current.push(i.current)
+                                    target.push(i.target)
                                 })
                                 addData(chart, current, 0);
+                                addData(chart, target, 0);
                             }
                         });
                 } , 5000)
