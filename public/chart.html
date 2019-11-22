@@ -229,7 +229,7 @@
                                     target.push(i.target)
                                 })
                                 addData(chart, current, 0);
-                                addData(chart, target, 0);
+                                addData2(chart, target, 0);
                             }
                         });
                 } , 5000)
@@ -253,6 +253,10 @@
 
         function addData(chart, data, datasetIndex) {
             chart.data.datasets[datasetIndex].data = data;
+            chart.update();
+        }
+        function addData2(chart, data ) {
+            chart.data.datasets[1].data = data;
             chart.update();
         }
 
